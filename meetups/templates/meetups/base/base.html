@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOim7flVa_-fmvHsV6V3JY8YWhwMj1b-Qnzw&usqp=CAUf"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap"
+      rel="stylesheet"
+    />
+    <title>{% block title %}All Meetups{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'meetups/styles/base.css' %}" />
+    {% block style_css %}{% endblock %}
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Viaoda Libre', cursive;
+      margin: 0;
+      background-color: #eb8cc6;
+      background-image: url('https://i.pinimg.com/736x/03/80/24/038024635b523d72f9988b08be6c6cf3.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      color: #f3bfe5;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Viaoda Libre', cursive;
+      color: #f5daf3;
+    }
+
+    button,
+    .btn {
+      cursor: pointer;
+      font: inherit;
+      padding: 0.5rem 1.5rem;
+      background-color: #ed2fae;
+      border: 1px solid #ca1180;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    button:hover,
+    .btn:hover {
+      background-color: #ed2fae;
+      border-color: #ca1180;
+    }
+
+    #main-header {
+      width: 100%;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    #main-header h1 {
+      font-size: 1.5rem;
+    }
+
+    #main-logo {
+      font-size: 3rem;
+      font-family: 'Viaoda Libre', cursive;
+      text-decoration: none;
+      color: #350490;
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <header id="main-header">
+      <nav id="main-logo"><a style="color:#b38b59" href="/meetups">Come Meet Art</a></nav>
+      <h1>{% block header %}{% endblock %}</h1>
+      {% block header_content %}{% endblock %}
+    </header>
+    <main>{% block body %}{% endblock %}</main>
+  </body>
+</html>

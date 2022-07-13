@@ -1,0 +1,27 @@
+{% extends 'meetups/base/base.html' %}
+{% load static %}
+    {% block title %}Art exhibition!!{% endblock %}
+    
+    {% block style_css %}
+    <link rel="stylesheet" href="{% static 'meetups/styles/all-meetups.css' %}">
+    {% endblock %}
+    {% block header %}
+    Get invitations to the greatest art exhibitions of the year.
+    {% endblock %}
+        <h1>Get invitations to the greatest art exhibitions of the year.</h1>
+        {% block header_content %}
+        <p>click on what catches your eye</p>
+        {% endblock %}
+        {% block body %}
+        <section>
+            <h2>Exhibitions</h2>
+            <hr>
+            <ol>
+                {% for mi in meetups %}
+                {% include 'meetups/includes/meetup-items.html' with title=mi.title image=mi.image.url %}
+                <hr>
+                {% endfor %}
+            </ol>
+            
+        </section>
+        {% endblock %}

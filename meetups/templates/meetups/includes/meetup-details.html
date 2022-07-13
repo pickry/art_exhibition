@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ meetup.title }}</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'meetups/images/favicons/favicon2.jpg' %}"
+    />
+    <link rel="stylesheet" href="{% static 'meetups/styles/base.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'meetups/styles/meetup-detail.css' %}"
+    />
+  </head>
+
+  <body
+    style="
+      background-color: rgb(253, 159, 175);
+      color: purple;
+      text-align: center;
+      border: double;
+    "
+  >
+    {% if meetup_found %}
+    <main>
+      <article>
+        <img
+          id="main-image"
+          src="{{ meetup.image.url }}"
+          alt="{{ meetup.title }}"
+        />
+        <section id="location">
+          <h2>Exhibition venue</h2>
+          <address>
+            This exhibition takes place in
+            <span>{{ meetup.location.name }} {{ meetup.location.address}}. </span> 
+            
+          </address>
+        </section>
+        <section id="details">
+          <h2>Specifics of the Exhibition</h2>
+          <p>{{ meetup.description }}</p>
+          <footer>
+            <p>
+              Need more details? Please contact the organizer at xyz@gmail.com (but don't spam us:))
+            </p>
+          </footer>
+        </section>
+        <section id="registration">
+          <h2>Register yourself for invitation</h2>
+          <form action="{% url 'meetup-detail' meetup.slug %}" method="POST">
+            {% csrf_token %}
+            <ul>
+              {{ form.as_ul }}
+            </ul>
+            <div id="registration-actions">
+              <button>Register</button>
+            </div>
+          </form>
+        </section>
+      </article>
+    </main>
+    {% else%}
+    <h3>No meetup found Sorry!!:(</h3>
+    {% endif %}
+  </body>
+</html>
